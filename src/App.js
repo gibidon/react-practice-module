@@ -16,7 +16,7 @@ function App() {
 			<Div>
 				<i className="fa fa-camera-retro"></i>
 				<i
-					class="fa fa-user-circle"
+					className="fa fa-user-circle"
 					aria-hidden="true"
 				></i>
 			</Div>

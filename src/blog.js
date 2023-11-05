@@ -1,7 +1,7 @@
 import './App.css';
 import { styled } from 'styled-components';
 import { Route, Routes } from 'react-router-dom';
-import { Header } from './components';
+import { Header, Footer } from './components';
 
 const Content = styled.div`
 	padding: 120px 0;
@@ -20,7 +20,6 @@ const H2 = styled.h2`
 	text-aligh: center;
 `;
 
-const Footer = () => <div>Подвал</div>;
 export const Blog = () => {
 	return (
 		<AppColumn>

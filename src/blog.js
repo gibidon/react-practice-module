@@ -1,7 +1,10 @@
 import { styled } from 'styled-components';
 import { Route, Routes } from 'react-router-dom';
 import { Header, Footer } from './components';
-import { Authorization } from './pages';
+import {
+	Authorization,
+	Registration,
+} from './pages';
 import './App.css';
 
 const Content = styled.div`
@@ -35,7 +38,7 @@ export const Blog = () => {
 					/>
 					<Route
 						path="/register"
-						element={<div>Регистрация</div>}
+						element={<Registration />}
 					/>
 					<Route
 						path="/users"

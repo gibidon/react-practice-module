@@ -21,7 +21,7 @@
 -сессия текущего пользователя: логин, пароль, роль
 
 Схема для редакс стора на клиенте:
--user : id/login/ role_id
+-user : id/login/ role_id/session
 -posts: массив post: id/ title/ image_url/ published_at/ comments_count
 -post: id/ title/ image_url/content / published_at/ comments: массив comment: id,authir/ content/ published_at
 -users: массив user: id,login/ registered_at/ role

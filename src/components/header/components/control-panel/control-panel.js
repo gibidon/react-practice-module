@@ -1,51 +1,85 @@
 import { styled } from 'styled-components';
-import { Icon } from '../../../../components';
+import { ROLE } from '../../../../constants';
+import {
+	useDispatch,
+	useSelector,
+} from 'react-redux';
+import {
+	selectUserRole,
+	selectUserLogin,
+	selectUserSession,
+} from '../../../../selectors';
+import {
+	Icon,
+	Button,
+} from '../../../../components';
 import {
 	Link,
 	useNavigate,
 } from 'react-router-dom';
+import { logout } from '../../../../actions';
 
 const RightAligned = styled.div`
 	display: flex;
 	justify-content: flex-end;
-`;
-
-const StyledLink = styled(Link)`
-	display: flex;
-	justify-content: center;
 	align-items: center;
-	font-size: 18px;
-	width: 100px;
-	height: 20px;
-	text-decoration: none;
-	color: #000;
-	border: 1px solid #000;
-	background-color: #eee;
 `;
 
-const StyledButton = styled.div`
+const StyledIcon = styled.div`
 	&:hover {
 		cursor: pointer;
 	}
 `;
 
+const StyledLogoutIcon = styled.div`
+	margin: 0 0 10px 10px;
+
+	&:hover {
+		cursor: pointer;
+	}
+`;
+
+const UserName = styled.div`
+	font-size: 18px;
+	font-weight: bold;
+`;
 const ControlPanelContainer = (className) => {
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
+	const session = useSelector(selectUserSession);
+	const roleId = useSelector(selectUserRole);
+	const login = useSelector(selectUserLogin);
+	console.log(login, roleId, typeof roleId);
 
 	return (
 		<div className={className}>
 			<RightAligned>
-				<StyledLink to="/login">Войти</StyledLink>
+				{roleId === ROLE.GUEST ? (
+					<Button>
+						<Link to="/login">Войти</Link>
+					</Button>
+				) : (
+					<>
+						<UserName>{login}</UserName>
+						<StyledIcon>
+							<Icon
+								id="fa-sign-out"
+								margin="0 0 0 10px"
+								onClick={() =>
+									dispatch(logout(session))
+								}
+							/>
+						</StyledIcon>
+					</>
+				)}
 			</RightAligned>
 			<RightAligned>
-				<StyledButton
-					onClick={() => navigate(-1)}
-				>
+				<StyledIcon onClick={() => navigate(-1)}>
 					<Icon
 						id="fa-backward"
 						margin="10px 0 0 0"
 					/>
-				</StyledButton>
+				</StyledIcon>
 
 				<Link to="/post">
 					<Icon

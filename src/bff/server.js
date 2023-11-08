@@ -1,8 +1,13 @@
-import { getUser } from './get-users';
+import { getUser } from './get-user';
 import { addUser } from './add-user';
-import { createSession } from './create-session';
+// import { createSession } from './create-session';
+import { ROLE } from '../constants';
+import { sessions } from './sessions';
 
 export const server = {
+	async logout(session) {
+		sessions.remove(session);
+	},
 	async authorize(authLogin, authPassword) {
 		const user = await getUser(authLogin);
 
@@ -12,6 +17,7 @@ export const server = {
 				res: null,
 			};
 		}
+
 		if (authPassword !== user.password) {
 			return {
 				error: 'wrong password',
@@ -21,7 +27,12 @@ export const server = {
 
 		return {
 			error: null,
-			res: createSession(user.role_id),
+			res: {
+				id: user.id,
+				login: user.login,
+				roleId: user.role_id,
+				session: sessions.create(user),
+			},
 		};
 	},
 
@@ -35,6 +46,14 @@ export const server = {
 		}
 		await addUser(regLogin, regPassword);
 
-		return { error: null, res: user.role_id };
+		return {
+			error: null,
+			res: {
+				id: user.id,
+				login: user.login,
+				roleId: ROLE.GUEST,
+				session: sessions.create(user),
+			},
+		};
 	},
 };

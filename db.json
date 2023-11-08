@@ -2,10 +2,10 @@
 	"users": [
 		{
 			"id": "001",
-			"login": "Valeriy",
-			"password": "some_pass",
+			"login": "Igor",
+			"password": "123123",
 			"registered_at": "20-04-1999",
-			"role_id": "d"
+			"role_id": 0
 		}
 	],
 	"roles": [

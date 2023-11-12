@@ -8,39 +8,11 @@
       "role_id": 0
     },
     {
-      "login": "Igor",
-      "password": "123123",
-      "registed_at": "2039-10-06 23:17",
-      "role_id": 2,
-      "id": "-yM3o19"
-    },
-    {
-      "login": "Igor",
-      "password": "123123",
-      "registed_at": "2052-08-18 09:48",
-      "role_id": 2,
-      "id": "6-Nqazj"
-    },
-    {
       "login": "Ivan",
       "password": "123123",
       "registed_at": "2051-07-08 03:20",
-      "role_id": 2,
+      "role_id": 1,
       "id": "JT7oQhu"
-    },
-    {
-      "login": "Andrei",
-      "password": "123123",
-      "registed_at": "2059-01-21 10:31",
-      "role_id": 2,
-      "id": "NdmsH9g"
-    },
-    {
-      "login": "Olga",
-      "password": "123123",
-      "registed_at": "2056-12-11 13:33",
-      "role_id": 2,
-      "id": "BttvfHC"
     },
     {
       "login": "Dmitry",
@@ -48,55 +20,6 @@
       "registed_at": "2047-01-19 01:27",
       "role_id": 2,
       "id": "1AeW2Fo"
-    },
-    {
-      "login": "sergei",
-      "password": "123123",
-      "registed_at": "2061-12-05 01:50",
-      "role_id": 2,
-      "id": "9edjFt_"
-    },
-    {
-      "login": "Timofei",
-      "password": "123123",
-      "registed_at": "2047-08-26 13:57",
-      "role_id": 2,
-      "id": "Vj4AmbR"
-    },
-    {
-      "login": "Jerome",
-      "password": "123123",
-      "registed_at": "2058-06-03 18:54",
-      "role_id": 2,
-      "id": "E2tP9g1"
-    },
-    {
-      "login": "Jerome2",
-      "password": "123123",
-      "registed_at": "2041-12-12 20:54",
-      "role_id": 2,
-      "id": "sxv_TQ9"
-    },
-    {
-      "login": "Igor3",
-      "password": "123123",
-      "registed_at": "2047-07-01 16:37",
-      "role_id": 2,
-      "id": "K8U4obt"
-    },
-    {
-      "login": "Igoe3",
-      "password": "123123",
-      "registed_at": "2056-01-30 20:07",
-      "role_id": 2,
-      "id": "IyUTiVu"
-    },
-    {
-      "login": "WWW",
-      "password": "123123",
-      "registed_at": "2033-07-07 20:02",
-      "role_id": 2,
-      "id": "h-WhB-q"
     }
   ],
   "roles": [

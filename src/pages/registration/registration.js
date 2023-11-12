@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import {
 	useDispatch,
-	useStore,
 	useSelector,
 } from 'react-redux';
 import * as yup from 'yup';
@@ -95,6 +94,7 @@ const RegistrationContainer = ({ className }) => {
 				dispatch(setUser(res)); //????????? or one string up?
 			});
 	};
+
 	const formError =
 		errors?.login?.message ||
 		errors?.password?.message ||
@@ -104,6 +104,7 @@ const RegistrationContainer = ({ className }) => {
 	if (roleId !== ROLE.GUEST) {
 		return <Navigate to="/" />;
 	}
+
 	return (
 		<div className={className}>
 			<H2>Регистрация</H2>

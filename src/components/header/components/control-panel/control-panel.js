@@ -1,22 +1,9 @@
 import { styled } from 'styled-components';
 import { ROLE } from '../../../../constants';
-import {
-	useDispatch,
-	useSelector,
-} from 'react-redux';
-import {
-	selectUserRole,
-	selectUserLogin,
-	selectUserSession,
-} from '../../../../selectors';
-import {
-	Icon,
-	Button,
-} from '../../../../components';
-import {
-	Link,
-	useNavigate,
-} from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUserRole, selectUserLogin, selectUserSession } from '../../../../selectors';
+import { Icon, Button } from '../../../../components';
+import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../../../../actions';
 
 const RightAligned = styled.div`
@@ -35,7 +22,11 @@ const ControlPanelContainer = (className) => {
 	const session = useSelector(selectUserSession);
 	const roleId = useSelector(selectUserRole);
 	const login = useSelector(selectUserLogin);
-	console.log(login, roleId, typeof roleId);
+
+	const onLogout = () => {
+		dispatch(logout(session));
+		sessionStorage.removeItem('userData');
+	};
 
 	return (
 		<div className={className}>
@@ -46,41 +37,23 @@ const ControlPanelContainer = (className) => {
 					</Button>
 				) : (
 					<>
-						<UserName>{login}</UserName>
-						<Icon
-							id="fa-sign-out"
-							margin="0 0 0 10px"
-							onClick={() =>
-								dispatch(logout(session))
-							}
-						/>
+						<UserName>Hello, {login} !</UserName>
+						<Icon id="fa-sign-out" margin="0 0 0 10px" onClick={onLogout} />
 					</>
 				)}
 			</RightAligned>
 			<RightAligned>
-				<Icon
-					id="fa-backward"
-					margin="10px 0 0 0"
-					onClick={() => navigate(-1)}
-				/>
+				<Icon id="fa-backward" margin="10px 0 0 0" onClick={() => navigate(-1)} />
 
 				<Link to="/post">
-					<Icon
-						id="fa-file-text-o"
-						margin="10px 0 0 17px"
-					/>
+					<Icon id="fa-file-text-o" margin="10px 0 0 17px" />
 				</Link>
 				<Link to="/users">
-					<Icon
-						id="fa-users"
-						margin="10px 0 0 17px"
-					/>
+					<Icon id="fa-users" margin="10px 0 0 17px" />
 				</Link>
 			</RightAligned>
 		</div>
 	);
 };
 
-export const ControlPanel = styled(
-	ControlPanelContainer,
-)``;
+export const ControlPanel = styled(ControlPanelContainer)``;

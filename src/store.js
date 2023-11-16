@@ -5,17 +5,9 @@ import {
 	compose,
 } from 'redux';
 import thunk from 'redux-thunk';
-import {
-	appReducer,
-	userReducer,
-	usersReducer,
-	postReducer,
-	postsReducer,
-} from './reducers';
+import { appReducer, userReducer, usersReducer, postReducer, postsReducer } from './reducers';
 
-const composeEnhancers =
-	window.__REDUX_DEVTOOLS_EXTENTION_COMPOSE__ ||
-	compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENTION_COMPOSE__ || compose;
 
 const reducer = combineReducers({
 	app: appReducer,
@@ -24,7 +16,4 @@ const reducer = combineReducers({
 	post: postReducer,
 	posts: postsReducer,
 });
-export const store = createStore(
-	reducer,
-	composeEnhancers(applyMiddleware(thunk)),
-);
+export const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));

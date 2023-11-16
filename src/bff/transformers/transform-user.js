@@ -1,4 +1,4 @@
-export const transfromUser = (dbUser) => ({
+export const transformUser = (dbUser) => ({
 	id: dbUser.id,
 	login: dbUser.login,
 	password: dbUser.password,

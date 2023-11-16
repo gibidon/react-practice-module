@@ -5,13 +5,11 @@ import { server } from '../bff';
 
 export const useServerRequest = () => {
 	const session = useSelector(selectUserSession);
+	// console.log('forming function out of useServerRequest hook..');
 
 	return useCallback(
 		(operation, ...params) => {
-			const request = [
-				'register',
-				'authorize',
-			].includes(operation)
+			const request = ['register', 'authorize', 'fetchPost'].includes(operation)
 				? params
 				: [session, ...params];
 			return server[operation](...request);

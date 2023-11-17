@@ -1,4 +1,4 @@
-import { getPost, getComments, getUser, getUsers } from '../api';
+import { getPost, getComments, getUsers } from '../api';
 
 export const fetchPost = async (postId) => {
 	const post = await getPost(postId);

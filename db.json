@@ -94,38 +94,10 @@
   "comments": [
     {
       "author_id": "001",
-      "post_id": "001",
-      "published_at": "2040-08-19 07:14",
-      "content": "qooeq",
-      "id": 1
-    },
-    {
-      "author_id": "001",
-      "post_id": "002",
-      "published_at": "2047-09-12 11:58",
-      "content": "c2",
-      "id": 2
-    },
-    {
-      "author_id": "001",
-      "post_id": "002",
-      "published_at": "2063-09-16 19:18",
-      "content": "sqldkdsalkd",
-      "id": 3
-    },
-    {
-      "author_id": "001",
       "post_id": "002",
       "published_at": "2057-10-30 02:18",
       "content": "11",
       "id": 4
-    },
-    {
-      "author_id": "001",
-      "post_id": "002",
-      "published_at": "2050-12-02 06:15",
-      "content": "12",
-      "id": 5
     },
     {
       "author_id": "001",
@@ -136,17 +108,24 @@
     },
     {
       "author_id": "001",
-      "post_id": "001",
-      "published_at": "2053-08-12 08:45",
-      "content": "dkalsjdkajds",
-      "id": 7
-    },
-    {
-      "author_id": "001",
       "post_id": "002",
       "published_at": "2059-02-06 22:55",
       "content": "aldalskdlakdls",
       "id": 8
+    },
+    {
+      "author_id": "001",
+      "post_id": "002",
+      "published_at": "2038-04-07 03:57",
+      "content": "daklsjdakjdasd",
+      "id": 9
+    },
+    {
+      "author_id": "001",
+      "post_id": "001",
+      "published_at": "2047-11-26 12:07",
+      "content": "dskdjskdfjds",
+      "id": 10
     }
   ],
   "sessions": [
@@ -171,6 +150,17 @@
         "roleId": 0
       },
       "id": 2
+    },
+    {
+      "hash": "0.87079484890146452435999435692792758345603942871094",
+      "user": {
+        "id": "001",
+        "login": "Igor",
+        "password": "123123",
+        "registeredAt": "20-04-1999",
+        "roleId": 0
+      },
+      "id": 3
     }
   ]
 }

@@ -13,68 +13,42 @@ const UserRowContainer = ({
 	roles,
 	onUserRemove,
 }) => {
-	const [initialRoleId, setInitialRoleId] =
-		useState(userRoleId);
-	const [selectedRoleId, setSelectedRoleId] =
-		useState(userRoleId);
+	const [initialRoleId, setInitialRoleId] = useState(userRoleId);
+	const [selectedRoleId, setSelectedRoleId] = useState(userRoleId);
 	const requestServer = useServerRequest();
 	const onRoleChange = ({ target }) => {
 		setSelectedRoleId(Number(target.value));
 	};
 	const onRoleSave = (userId, newUserRoleId) => {
-		requestServer(
-			'updateUserRole',
-			userId,
-			newUserRoleId,
-		).then(() => setInitialRoleId(newUserRoleId));
+		requestServer('updateUserRole', userId, newUserRoleId).then(() =>
+			setInitialRoleId(newUserRoleId),
+		);
 	};
-	const isSaveButtonDisabled =
-		selectedRoleId === initialRoleId;
+	const isSaveButtonDisabled = selectedRoleId === initialRoleId;
 
 	return (
 		<div className={className}>
 			<TableRow border={true}>
-				<div className="login-column">
-					{login}
-				</div>
-				<div className="registered-at-column">
-					{registeredAt}
-				</div>
+				<div className="login-column">{login}</div>
+				<div className="registered-at-column">{registeredAt}</div>
 
 				<div className="role-column">
-					<select
-						value={selectedRoleId}
-						onChange={onRoleChange}
-					>
-						{roles.map(
-							({
-								id: roleId,
-								name: roleName,
-							}) => (
-								<option
-									value={roleId}
-									key={roleId}
-								>
-									{roleName}
-								</option>
-							),
-						)}
+					<select value={selectedRoleId} onChange={onRoleChange}>
+						{roles.map(({ id: roleId, name: roleName }) => (
+							<option value={roleId} key={roleId}>
+								{roleName}
+							</option>
+						))}
 					</select>
 					<Icon
 						id="fa-floppy-o"
 						margin="0 0 0 10px"
 						disabled={isSaveButtonDisabled}
-						onClick={() =>
-							onRoleSave(id, selectedRoleId)
-						}
+						onClick={() => onRoleSave(id, selectedRoleId)}
 					/>
 				</div>
 			</TableRow>
-			<Icon
-				id="fa-trash-o"
-				margin="0 0 0 10px"
-				onClick={onUserRemove}
-			/>
+			<Icon id="fa-trash-o" margin="0 0 0 10px" onClick={onUserRemove} />
 		</div>
 	);
 };

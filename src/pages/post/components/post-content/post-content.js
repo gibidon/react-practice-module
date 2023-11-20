@@ -2,6 +2,7 @@ import { H2, Icon } from '../../../../components';
 import { useNavigate } from 'react-router-dom';
 import { SpecialPanel } from '../special-panel/special-panel';
 import { styled } from 'styled-components';
+import { useConsoleLog, useWindowSize } from '../../../../hooks';
 
 const PostContentContainer = ({
 	className,
@@ -9,8 +10,14 @@ const PostContentContainer = ({
 }) => {
 	const navigate = useNavigate();
 
+	useConsoleLog();
+	useWindowSize();
+	// let sizes = useWindowSize();
+	// console.log(sizes);
+
 	return (
 		<div className={className}>
+			{/* {sizes} */}
 			<img src={imageUrl} alt={title} />
 			<H2>{title}</H2>
 			<SpecialPanel

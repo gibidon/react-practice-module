@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useMatch } from 'react-router-dom';
 import { Comments, PostContent, PostForm } from './components';
-import { useServerRequest } from '../../hooks';
+import { useServerRequest, useConsoleLog, useWindowSize } from '../../hooks';
 import { loadPostAsync, RESET_POST_DATA } from '../../actions';
 import { selectPost } from '../../selectors';
 import { styled } from 'styled-components';

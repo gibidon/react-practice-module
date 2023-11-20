@@ -3,8 +3,7 @@ import styled from 'styled-components';
 
 const FooterContainer = ({ className }) => {
 	const [city, setCity] = useState('');
-	const [temperature, setTemperature] =
-		useState('');
+	const [temperature, setTemperature] = useState('');
 	const [weather, setWeather] = useState('');
 
 	useEffect(() => {
@@ -18,6 +17,7 @@ const FooterContainer = ({ className }) => {
 				setWeather(weather[0].description);
 			});
 	}, []);
+
 	return (
 		<div className={className}>
 			<div>

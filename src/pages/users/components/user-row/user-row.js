@@ -16,14 +16,17 @@ const UserRowContainer = ({
 	const [initialRoleId, setInitialRoleId] = useState(userRoleId);
 	const [selectedRoleId, setSelectedRoleId] = useState(userRoleId);
 	const requestServer = useServerRequest();
+
 	const onRoleChange = ({ target }) => {
 		setSelectedRoleId(Number(target.value));
 	};
+
 	const onRoleSave = (userId, newUserRoleId) => {
 		requestServer('updateUserRole', userId, newUserRoleId).then(() =>
 			setInitialRoleId(newUserRoleId),
 		);
 	};
+
 	const isSaveButtonDisabled = selectedRoleId === initialRoleId;
 
 	return (
@@ -52,7 +55,7 @@ const UserRowContainer = ({
 		</div>
 	);
 };
-//dsdf
+
 export const UserRow = styled(UserRowContainer)`
 	display: flex;
 	border: 1px solid #000;

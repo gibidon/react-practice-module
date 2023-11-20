@@ -4,16 +4,17 @@ import { selectUserSession } from '../selectors';
 import { server } from '../bff';
 
 export const useServerRequest = () => {
-	const session = useSelector(selectUserSession);
-	// console.log('forming function out of useServerRequest hook..');
+	const session = useSelector(selectUserSession); //done only once
+	console.log('forming function out of useServerRequest hook..');
 
 	return useCallback(
 		(operation, ...params) => {
-			const request = ['register', 'authorize', 'fetchPost'].includes(operation)
+			console.log('using useCallback to create request function..');
+			const request = ['register', 'authorize', 'fetchPost', 'fetchPosts'].includes(operation)
 				? params
-				: [session, ...params];
+				: [session, ...params]; //session  key inserted
 			return server[operation](...request);
 		},
-		[session],
+		[session], //new function creates if session changes
 	);
 };

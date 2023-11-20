@@ -2,8 +2,8 @@ import { H2, Content } from '../../components';
 import { TableRow, UserRow } from './components';
 import { useServerRequest } from '../../hooks';
 import { useState, useEffect } from 'react';
-import { styled } from 'styled-components';
 import { ROLE } from '../../constants';
+import { styled } from 'styled-components';
 
 const UsersContainer = ({ className }) => {
 	const [users, setUsers] = useState([]);
@@ -11,7 +11,7 @@ const UsersContainer = ({ className }) => {
 	const [errorMessage, setErrorMessage] = useState(null);
 	const [shouldUpdateUserList, setShouldUpdateUserList] = useState(false);
 
-	const requestServer = useServerRequest();
+	const requestServer = useServerRequest(); //extracted hash key at this moment from store
 
 	useEffect(() => {
 		Promise.all([requestServer('fetchUsers'), requestServer('fetchRoles')]).then(

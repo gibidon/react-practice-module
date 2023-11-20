@@ -26,6 +26,7 @@ const authFormSchema = yup.object().shape({
 		.min(6, 'Неверно заполнен пароль. Минимум 6 символов')
 		.max(30, 'Неверно заполнен пароль. Не больше 30 символов'),
 });
+
 const StyledLink = styled(Link)`
 	text-align: center;
 	text-decoration: underline;
@@ -46,6 +47,7 @@ const AuthorizationContainer = ({ className }) => {
 		},
 		resolver: yupResolver(authFormSchema),
 	});
+
 	const dispatch = useDispatch();
 	const [serverError, setServerError] = useState(null);
 	const roleId = useSelector(selectUserRole);
@@ -62,6 +64,7 @@ const AuthorizationContainer = ({ className }) => {
 			sessionStorage.setItem('userData', JSON.stringify(res));
 		});
 	};
+
 	const formError = errors?.login?.message || errors?.password?.message;
 	const errorMessage = formError || serverError;
 

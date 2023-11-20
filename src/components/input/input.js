@@ -2,14 +2,9 @@ import styled from 'styled-components';
 import { forwardRef } from 'react';
 
 const InputContainer = forwardRef(
+	//3-2
 	({ className, width, ...props }, ref) => {
-		return (
-			<input
-				className={className}
-				{...props}
-				ref={ref}
-			></input>
-		);
+		return <input className={className} {...props} ref={ref}></input>;
 	},
 );
 

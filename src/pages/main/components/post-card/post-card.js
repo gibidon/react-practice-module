@@ -3,7 +3,6 @@ import { Icon } from '../../../../components';
 import { styled } from 'styled-components';
 
 const PostCardContainer = ({ className, id, title, imageUrl, publishedAt, commentsCount }) => {
-	console.log(commentsCount);
 	return (
 		<div className={className}>
 			<Link to={`/post/${id}`}>

@@ -5,7 +5,7 @@ import { server } from '../bff';
 
 export const useServerRequest = () => {
 	const session = useSelector(selectUserSession); //done only once
-	console.log('forming function out of useServerRequest hook..');
+	// console.log('forming function out of useServerRequest hook..');
 
 	return useCallback(
 		(operation, ...params) => {
@@ -15,6 +15,6 @@ export const useServerRequest = () => {
 				: [session, ...params]; //session  key inserted
 			return server[operation](...request);
 		},
-		[session], //new function creates if session changes
+		[session], //new function gets created if session changes
 	);
 };

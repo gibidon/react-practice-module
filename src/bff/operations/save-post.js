@@ -16,6 +16,6 @@ export const savePost = async (hash, newPostData) => {
 
 	const savedPost =
 		newPostData.id === '' ? await addPost(newPostData) : await updatePost(newPostData);
-	// console.log(savedPost);
+
 	return { error: null, res: savedPost };
 };

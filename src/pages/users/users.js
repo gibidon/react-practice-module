@@ -1,7 +1,11 @@
-import { H2, Content } from '../../components';
+import { H2, PrivateContent } from '../../components';
 import { TableRow, UserRow } from './components';
 import { useServerRequest } from '../../hooks';
+import { useSelector } from 'react-redux';
+import { selectUserRole } from '../../selectors';
+
 import { useState, useEffect } from 'react';
+import { checkAccess } from '../../utils';
 import { ROLE } from '../../constants';
 import { styled } from 'styled-components';
 
@@ -10,10 +14,15 @@ const UsersContainer = ({ className }) => {
 	const [roles, setRoles] = useState([]);
 	const [errorMessage, setErrorMessage] = useState(null);
 	const [shouldUpdateUserList, setShouldUpdateUserList] = useState(false);
+	const userRole = useSelector(selectUserRole);
 
 	const requestServer = useServerRequest(); //extracted hash key at this moment from store
 
 	useEffect(() => {
+		if (!checkAccess([ROLE.ADMIN], userRole)) {
+			return;
+		}
+
 		Promise.all([requestServer('fetchUsers'), requestServer('fetchRoles')]).then(
 			([usersRes, rolesRes]) => {
 				if (usersRes.error || rolesRes.error) {
@@ -24,15 +33,19 @@ const UsersContainer = ({ className }) => {
 				setRoles(rolesRes.res);
 			},
 		);
-	}, [requestServer, shouldUpdateUserList]);
+	}, [requestServer, shouldUpdateUserList, userRole]);
 
 	const onUserRemove = (userId) => {
+		if (!checkAccess([ROLE.ADMIN], userRole)) {
+			return;
+		}
+
 		requestServer('removeUser', userId).then(setShouldUpdateUserList(!shouldUpdateUserList));
 	};
 
 	return (
-		<div className={className}>
-			<Content error={errorMessage}>
+		<PrivateContent access={[ROLE.ADMIN]} serverError={errorMessage}>
+			<div className={className}>
 				<H2> Пользователи</H2>
 				<div>
 					<TableRow>
@@ -53,8 +66,8 @@ const UsersContainer = ({ className }) => {
 						/>
 					))}
 				</div>
-			</Content>
-		</div>
+			</div>
+		</PrivateContent>
 	);
 };
 
@@ -65,5 +78,4 @@ export const Users = styled(UsersContainer)`
 	margin: 0 auto;
 	width: 570px;
 	margin: 0 auto;
-	font-size: 18px;
 `;

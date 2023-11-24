@@ -1,10 +1,12 @@
+import PropTypes from 'prop-types';
 import { Icon, Input } from '../../../../components';
 import { styled } from 'styled-components';
 
-const SearchContainer = ({ className, seachPhrase, onChange }) => {
+const SearchContainer = ({ className, searchPhrase, onChange }) => {
+	console.log('sf in scontainer', searchPhrase);
 	return (
 		<div className={className}>
-			<Input placeholder="Поиск по заголовкам.." value={seachPhrase} onChange={onChange} />
+			<Input placeholder="Поиск по заголовкам.." value={searchPhrase} onChange={onChange} />
 			<Icon id="fa-search" inactive={true} size="21px" />
 		</div>
 	);
@@ -28,3 +30,8 @@ export const Search = styled(SearchContainer)`
 		right: 9px;
 	}
 `;
+
+Search.propTypes = {
+	seachPhrase: PropTypes.string.isRequired,
+	onChange: PropTypes.func.isRequired,
+};

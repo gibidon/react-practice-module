@@ -16,7 +16,6 @@ export const MainContainer = ({ className }) => {
 	useEffect(() => {
 		requestServer('fetchPosts', searchPhrase, page, PAGINATION_LIMIT).then(
 			({ res: { posts, links } }) => {
-				console.log(links);
 				setPosts(posts);
 				setLastPage(getLastPageFromLinks(links));
 			},

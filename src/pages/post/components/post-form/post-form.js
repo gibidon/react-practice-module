@@ -7,6 +7,7 @@ import { SpecialPanel } from '../special-panel/special-panel';
 import { savePostAsync } from '../../../../actions';
 import { sanitizeContent } from './utils';
 import { styled } from 'styled-components';
+import { PROP_TYPE } from '../../../../constants';
 
 const PostFormContainer = ({ className, post: { id, title, imageUrl, content, publishedAt } }) => {
 	const contentRef = useRef(null);
@@ -75,3 +76,7 @@ export const PostForm = styled(PostFormContainer)`
 		font-size: 18px;
 	}
 `;
+
+PostForm.propTypes = {
+	post: PROP_TYPE.POST.isRequired,
+};
